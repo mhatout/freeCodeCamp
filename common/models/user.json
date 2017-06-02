@@ -58,6 +58,12 @@
     "joinedGithubOn": {
       "type": "date"
     },
+    "website": {
+      "type": "string"
+    },
+    "githubProfile": {
+      "type": "string"
+    },
     "isMigrationGrandfathered": {
       "type": "boolean",
       "default": false
