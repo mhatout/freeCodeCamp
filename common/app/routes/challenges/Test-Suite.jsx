@@ -13,9 +13,15 @@ function getAccessibleText(err, pass, text) {
 
   // Determine test status (i.e. icon)
   if (err) {
+<<<<<<< HEAD
     accessibleText += 'Error ';
   } else if (pass) {
     accessibleText += 'Pass';
+=======
+    accessibleText = 'Error';
+  } else if (pass) {
+    accessibleText = 'Pass';
+>>>>>>> fix(challenges): Provide accessible test description and status
   }
 
   // Append the text itself
