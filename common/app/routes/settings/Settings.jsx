@@ -236,6 +236,7 @@ export class Settings extends React.Component {
               smOffset={ 2 }
               xs={ 12 }
               >
+<<<<<<< HEAD
               <JobSettings
                 isAvailableForHire={ isAvailableForHire }
                 toggle={ toggleIsAvailableForHire }
@@ -272,6 +273,31 @@ export class Settings extends React.Component {
               sm={ 8 }
               smOffset={ 2 }
               xs={ 12 }
+=======
+              Sign me out of freeCodeCamp
+            </Button>
+            <Button
+              block={ true }
+              bsSize='lg'
+              bsStyle='primary'
+              className='btn-link-social'
+              href={ 'mail:team@freecodecamp.org' }
+              >
+              Email us at team@freecodecamp.org
+            </Button>
+          </Col>
+        </Row>
+        <h1 className='text-center'>Settings for your Account</h1>
+        <h2 className='text-center'>Actions</h2>
+        <Row>
+          <Col xs={ 12 }>
+            <Button
+              block={ true }
+              bsSize='lg'
+              bsStyle='primary'
+              className='btn-link-social'
+              onClick={ toggleNightMode }
+>>>>>>> refactor: Replace .com with .org
               >
               <LanguageSettings />
             </Col>
