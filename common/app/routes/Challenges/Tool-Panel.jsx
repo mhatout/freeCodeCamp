@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap';
 
-import ns from './ns.json';
-
 const unlockWarning = (
   <Tooltip id='tooltip'>
     <h4>
@@ -125,9 +123,13 @@ export default class ToolPanel extends PureComponent {
           <Button
             bsStyle='primary'
             className='btn-big btn-block'
+<<<<<<< HEAD
             componentClass='a'
             href={ `https://gitter.im/freecodecamp/${helpChatRoom}` }
             target='_blank'
+=======
+            onClick={ openHelpModal }
+>>>>>>> fix(merge-conflicts): Add missing classNames to Get Help button
             >
           Get a hint
           </Button>
