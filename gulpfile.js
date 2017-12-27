@@ -242,7 +242,7 @@ gulp.task('dev-server', syncDepenedents, function() {
         host: `${hostname}:${syncPort}`
       })
     },
-    logLeval: 'debug',
+    logLevel: 'debug',
     files: paths.syncWatch,
     port: syncPort,
     open: false,
