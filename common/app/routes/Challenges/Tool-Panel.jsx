@@ -113,21 +113,27 @@ export default class ToolPanel extends PureComponent {
         <div className='button-spacer' />
 
           <Button
+            block={ true }
             bsStyle='primary'
-            className='btn-big btn-block'
+            className='btn-big'
             onClick={ this.makeReset }
             >
           Reset your code
           </Button>
           <div className='button-spacer' />
           <Button
+            block={ true }
             bsStyle='primary'
+<<<<<<< HEAD
             className='btn-big btn-block'
 <<<<<<< HEAD
             componentClass='a'
             href={ `https://gitter.im/freecodecamp/${helpChatRoom}` }
             target='_blank'
 =======
+=======
+            className='btn-big'
+>>>>>>> fix(classNames): Use block prop for .btn-block className
             onClick={ openHelpModal }
 >>>>>>> fix(merge-conflicts): Add missing classNames to Get Help button
             >
@@ -135,8 +141,9 @@ export default class ToolPanel extends PureComponent {
           </Button>
           <div className='button-spacer' />
           <Button
+            block={ true }
             bsStyle='primary'
-            className='btn-big btn-block'
+            className='btn-big'
             onClick={ openBugModal }
             >
           Ask for help on the forum
