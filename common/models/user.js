@@ -248,6 +248,7 @@ module.exports = function(User) {
   });
 
   debug('setting up user hooks');
+<<<<<<< HEAD
   // overwrite lb confirm
   User.confirm = function(uid, token, redirectTo) {
     return this.findById(uid)
@@ -261,6 +262,43 @@ module.exports = function(User) {
               redirectTo
             }
           );
+=======
+
+  User.beforeRemote('confirm', function(ctx, _, next) {
+
+    if (!ctx.req.query) {
+      return ctx.res.redirect('/');
+    }
+
+    const uid = ctx.req.query.uid;
+    const token = ctx.req.query.token;
+    const redirect = ctx.req.query.redirect;
+
+    return User.findById(uid, (err, user) => {
+
+        if (err || !user || !user.newEmail) {
+          ctx.req.flash('danger', {
+            msg: dedent`Oops, something went wrong, please try again later`
+          });
+          return ctx.res.redirect('/');
+        }
+
+        if (!user.verificationToken && !user.emailVerified) {
+          ctx.req.flash('info', {
+            msg: dedent`Looks like we have your email. But you haven't
+             verified it yet, please sign in and request a fresh verification
+             link.`
+          });
+          return ctx.res.redirect(redirect);
+        }
+
+        if (!user.verificationToken && user.emailVerified) {
+          ctx.req.flash('info', {
+            msg: dedent`Looks like you have already verified your email.
+             Please sign in to continue.`
+          });
+          return ctx.res.redirect(redirect);
+>>>>>>> fix(app): Normalize flash type
         }
         if (user.verificationToken !== token) {
           throw wrapHandledError(
@@ -280,8 +318,63 @@ module.exports = function(User) {
           emailVerified: true,
           emailVerifyTTL: null,
           newEmail: null,
+<<<<<<< HEAD
           verificationToken: null
         }).toPromise();
+=======
+          emailVerifyTTL: null
+        })
+        .do(() => {
+          return next();
+        })
+        .toPromise();
+
+    });
+  });
+
+  User.afterRemote('confirm', function(ctx) {
+    if (!ctx.req.query) {
+      return ctx.res.redirect('/');
+    }
+    const redirect = ctx.req.query.redirect;
+    ctx.req.flash('success', {
+      msg: [
+        'Your email has been confirmed!'
+      ]
+    });
+    return ctx.res.redirect(redirect);
+  });
+
+  User.beforeRemote('create', function({ req, res }, _, next) {
+    req.body.username = 'fcc' + uuid.v4().slice(0, 8);
+    if (!req.body.email) {
+      return next();
+    }
+    if (!isEmail(req.body.email)) {
+      return next(new Error('Email format is not valid'));
+    }
+    return User.doesExist(null, req.body.email)
+      .then(exists => {
+        if (!exists) {
+          return next();
+        }
+
+        req.flash('danger', {
+          msg: dedent`
+      The ${req.body.email} email address is already associated with an account.
+      Try signing in with it here instead.
+          `
+        });
+
+        return res.redirect('/email-signin');
+      })
+      .catch(err => {
+        console.error(err);
+        req.flash('danger', {
+          msg: 'Oops, something went wrong, please try again later'
+        });
+        return res.redirect('/email-signin');
+>>>>>>> fix(app): Normalize flash type
       });
   };
 
@@ -296,11 +389,28 @@ module.exports = function(User) {
           res.cookie('access_token', accessToken.id, config);
           res.cookie('userId', accessToken.userId, config);
         }
+<<<<<<< HEAD
       });
     const updateUser = this.update$({
       emailVerified: true,
       emailAuthLinkTTL: null,
       emailVerifyTTL: null
+=======
+        return res.redirect(redirectTo);
+      }
+
+      req.flash('success', { msg: 'Success! You are now logged in.' });
+      return res.redirect('/');
+    });
+  });
+
+  User.afterRemoteError('login', function(ctx) {
+    var res = ctx.res;
+    var req = ctx.req;
+
+    req.flash('danger', {
+      msg: 'Invalid username or password.'
+>>>>>>> fix(app): Normalize flash type
     });
     return Observable.combineLatest(
       createToken,
