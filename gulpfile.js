@@ -1,5 +1,4 @@
 // enable debug for gulp
-/* eslint-disable prefer-object-spread/prefer-object-spread */
 process.env.DEBUG = process.env.DEBUG || 'fcc:*';
 require('dotenv').load();
 
@@ -289,11 +288,10 @@ gulp.task('pack-client', function() {
 
   return gulp.src(webpackConfig.entry.bundle)
     .pipe(plumber({ errorHandler }))
-    .pipe(webpackStream(Object.assign(
-      {},
-      webpackConfig,
-      webpackOptions
-    )))
+    .pipe(webpackStream({
+      ...webpackConfig,
+      ...webpackOptions
+    }))
     .pipe(gulpif(condition, gutil.noop(), uglify()))
     .pipe(gulp.dest(dest));
 });
@@ -410,9 +408,8 @@ gulp.task('js', function() {
 });
 
 
-function collector(file, memo) {
-  return Object.assign({}, JSON.parse(file.contents), memo);
-}
+const collector = (file, memo) =>
+  Object.assign(memo, JSON.parse(file.contents));
 
 function done(manifest) {
   return sortKeys(manifest);
