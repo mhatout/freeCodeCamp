@@ -123,24 +123,33 @@ export default class ToolPanel extends PureComponent {
           Reset your code
           </Button>
           <div className='button-spacer' />
+<<<<<<< HEAD
           <Button
             block={ true }
             bsStyle='primary'
 <<<<<<< HEAD
             className='btn-big btn-block'
-<<<<<<< HEAD
-            componentClass='a'
-            href={ `https://gitter.im/freecodecamp/${helpChatRoom}` }
-            target='_blank'
-=======
+<<<<<<<<< saved version
 =======
             className='btn-big'
+=========
+
+>>>>>>>>> local version
+            onClick={ openHelpModal }
+<<<<<<<<< saved version
 >>>>>>> fix(classNames): Use block prop for .btn-block className
             onClick={ openHelpModal }
->>>>>>> fix(merge-conflicts): Add missing classNames to Get Help button
+<<<<<<<<< saved version
+
+=========
+
+>>>>>>>>> local version
+>>>>>>>>> local version
             >
           Get a hint
           </Button>
+          <div className='button-spacer' />
+<<<<<<<<< saved version
           <div className='button-spacer' />
           {guideUrl &&
             <div>
@@ -155,14 +164,55 @@ export default class ToolPanel extends PureComponent {
               </Button>
               <div className='button-spacer' />
             </div>
+=======
+          {
+            guideUrl &&
+              <div>
+                <Button
+                  block={ true }
+                  bsStyle='primary'
+                  className='btn-big'
+                  href={ guideUrl }
+                  target='_blank'
+                  >
+                  Get a hint
+                </Button>
+                <div className='button-spacer' />
+              </div>
+>>>>>>> feat(tool-panel): Make buttons look and act like current productiion (#16580)
+          }
+=========
+          <Button
+            block={ true }
+            bsStyle='primary'
+>>>>>>>>> local version
+          <Button
+            block={ true }
+            bsStyle='primary'
+            className='btn-big'
+            onClick={ openHelpModal }
+            >
+<<<<<<< HEAD
+          Ask for help on the forum
+                  target='_blank'
+                  >
+                  Get a hint
+                </Button>
+                <div className='button-spacer' />
+              </div>
+>>>>>>> feat(tool-panel): Make buttons look and act like current productiion (#16580)
           }
           <Button
             block={ true }
             bsStyle='primary'
             className='btn-big'
-            onClick={ openBugModal }
+            onClick={ openHelpModal }
             >
+<<<<<<< HEAD
           Ask for help on the forum
+=======
+            Ask for help on the forum
+>>>>>>> feat(tool-panel): Make buttons look and act like current productiion (#16580)
           </Button>
         <div className='button-spacer' />
       </div>
