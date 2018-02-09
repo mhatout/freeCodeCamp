@@ -179,70 +179,6 @@ export class Settings extends React.Component {
               className='btn-link-social'
               onClick={ () => toggleNightMode(username, currentTheme) }
               >
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <JobSettings
-                isAvailableForHire={ isAvailableForHire }
-                toggle={ toggleIsAvailableForHire }
-              />
-            </Col>
-          </Row>
-          <div className='spacer' />
-          <h2 className='text-center'>Email Settings</h2>
-          <Row>
-            <Col
-              md={ 6 }
-              mdOffset={ 3 }
-              sm={ 8 }
-              smOffset={ 2 }
-              xs={ 12 }
-              >
-              <EmailSettings
-                email={ email }
-                sendMonthlyEmail={ sendMonthlyEmail }
-                sendNotificationEmail={ sendNotificationEmail }
-                sendQuincyEmail={ sendQuincyEmail }
-                toggleMonthlyEmail={ toggleMonthlyEmail }
-                toggleNotificationEmail={ toggleNotificationEmail }
-                toggleQuincyEmail={ toggleQuincyEmail }
-              />
-            </Col>
-          </Row>
-          <div className='spacer' />
-          <h2 className='text-center'>Display challenges in:</h2>
-          <Row>
-            <Col
-              md={ 6 }
-              mdOffset={ 3 }
-              sm={ 8 }
-              smOffset={ 2 }
-              xs={ 12 }
-=======
-              Sign me out of freeCodeCamp
-            </Button>
-            <Button
-              block={ true }
-              bsSize='lg'
-              bsStyle='primary'
-              className='btn-link-social'
-              href={ 'mail:team@freecodecamp.org' }
-              >
-              Email us at team@freecodecamp.org
-            </Button>
-          </Col>
-        </Row>
-        <h1 className='text-center'>Settings for your Account</h1>
-        <h2 className='text-center'>Actions</h2>
-        <Row>
-          <Col xs={ 12 }>
-            <Button
-              block={ true }
-              bsSize='lg'
-              bsStyle='primary'
-              className='btn-link-social'
-              onClick={ toggleNightMode }
->>>>>>> refactor: Replace .com with .org
-=======
               Toggle Night Mode
             </Button>
           </Col>
@@ -353,7 +289,6 @@ export class Settings extends React.Component {
               bsStyle='danger'
               className='btn-link-social'
               href='/delete-my-account'
->>>>>>> fix(Settings): Always use ChildContainer
               >
               Delete my freeCodeCamp account
             </Button>
